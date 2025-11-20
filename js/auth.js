@@ -119,7 +119,7 @@ document.addEventListener('DOMContentLoaded', function() {
     function redirectToDashboard(role) {
         switch(role) {
             case 'system_admin':
-                window.location.href = '../system-admin.html';
+                window.location.href = '../login/dashboard/system-admin.html';
                 break;
             case 'admin':
                 window.location.href = '../dashboard/admin.html';

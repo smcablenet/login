@@ -1,4 +1,4 @@
-// Authentication System with Sample Admin - FIXED
+// Authentication System with Sample Admin
 document.addEventListener('DOMContentLoaded', function() {
     const loginForm = document.getElementById('loginForm');
     const loginMessage = document.getElementById('loginMessage');
@@ -52,8 +52,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 showMessage('Login successful! Redirecting...', 'success');
                 
                 setTimeout(() => {
-                    // ✅ CORRECT PATH - ONLY ONE PATH!
-                    window.location.href = 'dashboard/system-admin.html';
+                    window.location.href = '../system-admin.html';
                 }, 1000);
                 return;
             }
@@ -118,35 +117,28 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     function redirectToDashboard(role) {
-        // ✅ ALL PATHS ARE CONSISTENT NOW
-        const basePath = 'dashboard/';
-        
         switch(role) {
             case 'system_admin':
-                window.location.href = basePath + 'system-admin.html';
+                window.location.href = '/dashboard/system-admin.html';
                 break;
             case 'admin':
-                window.location.href = basePath + 'admin.html';
+                window.location.href = '/dashboard/admin.html';
                 break;
             case 'user':
-                window.location.href = basePath + 'user.html';
+                window.location.href = '/dashboard/user.html';
                 break;
             default:
-                window.location.href = basePath + 'user.html';
+                window.location.href = 'dashboard/user.html';
         }
     }
     
     function checkExistingLogin() {
         const user = localStorage.getItem('currentUser');
-        console.log('Checking existing login in auth.js');
-        
         if (user) {
             try {
                 const userData = JSON.parse(user);
-                console.log('Found user, redirecting to:', userData.role);
                 redirectToDashboard(userData.role);
             } catch (error) {
-                console.log('Error parsing user data');
                 localStorage.removeItem('currentUser');
             }
         }
@@ -158,15 +150,13 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     function showMessage(text, type) {
-        if (loginMessage) {
-            loginMessage.textContent = text;
-            loginMessage.className = `message ${type}`;
-        }
+        loginMessage.textContent = text;
+        loginMessage.className = `message ${type}`;
     }
 });
 
 // Global logout function
 function logout() {
     localStorage.removeItem('currentUser');
-    window.location.href = 'index.html';
-        }
+    window.location.href = '../index.html';
+    }

@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 showMessage('Login successful! Redirecting...', 'success');
                 
                 setTimeout(() => {
-                    window.location.href = '../system-admin.html';
+                    window.location.href = '../dashboard/system-admin.html';
                 }, 1000);
                 return;
             }

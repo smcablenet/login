@@ -1,4 +1,4 @@
-// Authentication System with Sample Admin - FIXED PATHS
+// Authentication System with Sample Admin - FIXED
 document.addEventListener('DOMContentLoaded', function() {
     const loginForm = document.getElementById('loginForm');
     const loginMessage = document.getElementById('loginMessage');
@@ -52,7 +52,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 showMessage('Login successful! Redirecting...', 'success');
                 
                 setTimeout(() => {
-                    window.location.href = 'dashboard/system-admin.html'; // ✅ FIXED PATH
+                    // ✅ CORRECT PATH - ONLY ONE PATH!
+                    window.location.href = 'dashboard/system-admin.html';
                 }, 1000);
                 return;
             }
@@ -117,30 +118,36 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     function redirectToDashboard(role) {
+        // ✅ ALL PATHS ARE CONSISTENT NOW
+        const basePath = 'dashboard/';
+        
         switch(role) {
             case 'system_admin':
-                window.location.href = 'dashboard/system-admin.html'; // ✅ FIXED PATH
+                window.location.href = basePath + 'system-admin.html';
                 break;
             case 'admin':
-                window.location.href = 'dashboard/admin.html'; // ✅ FIXED PATH
+                window.location.href = basePath + 'admin.html';
                 break;
             case 'user':
-                window.location.href = 'dashboard/user.html'; // ✅ FIXED PATH
+                window.location.href = basePath + 'user.html';
                 break;
             default:
-                window.location.href = 'dashboard/user.html'; // ✅ FIXED PATH
+                window.location.href = basePath + 'user.html';
         }
     }
     
     function checkExistingLogin() {
         const user = localStorage.getItem('currentUser');
+        console.log('Checking existing login in auth.js');
+        
         if (user) {
             try {
                 const userData = JSON.parse(user);
+                console.log('Found user, redirecting to:', userData.role);
                 redirectToDashboard(userData.role);
             } catch (error) {
-                console.log('No valid user session found');
-                // Don't remove item here, let it be handled by login page
+                console.log('Error parsing user data');
+                localStorage.removeItem('currentUser');
             }
         }
     }
@@ -161,5 +168,5 @@ document.addEventListener('DOMContentLoaded', function() {
 // Global logout function
 function logout() {
     localStorage.removeItem('currentUser');
-    window.location.href = 'index.html'; // ✅ FIXED PATH
-            }
+    window.location.href = 'index.html';
+        }

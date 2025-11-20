@@ -16,6 +16,10 @@ function checkAuthentication() {
     
     document.getElementById('userName').textContent = user.full_name || user.phone;
 }
+function logout() {
+    localStorage.removeItem('currentUser');
+    window.location.href = '../index.html';
+}
 
 // Load sample data for testing
 function loadSampleData() {

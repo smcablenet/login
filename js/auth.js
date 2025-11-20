@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 showMessage('Login successful! Redirecting...', 'success');
                 
                 setTimeout(() => {
-                    window.location.href = 'system-admin.html';
+                    window.location.href = 'dasshboard/system-admin.html';
                 }, 1000);
                 return;
             }
@@ -119,13 +119,13 @@ document.addEventListener('DOMContentLoaded', function() {
     function redirectToDashboard(role) {
         switch(role) {
             case 'system_admin':
-                window.location.href = 'system-admin.html';
+                window.location.href = 'dashboard/system-admin.html';
                 break;
             case 'admin':
-                window.location.href = 'admin.html';
+                window.location.href = 'dashboard/admin.html';
                 break;
             case 'user':
-                window.location.href = '/user.html';
+                window.location.href = 'dashboard/user.html';
                 break;
             default:
                 window.location.href = 'dashboard/user.html';

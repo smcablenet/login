@@ -1,4 +1,4 @@
-// Authentication System with Sample Admin
+// Authentication System with Sample Admin - INTERNAL PATHS
 document.addEventListener('DOMContentLoaded', function() {
     const loginForm = document.getElementById('loginForm');
     const loginMessage = document.getElementById('loginMessage');
@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 showMessage('Login successful! Redirecting...', 'success');
                 
                 setTimeout(() => {
-                    window.location.href = '../login/dashboard/system-admin.html';
+                    window.location.href = 'dashboard/system-admin.html';
                 }, 1000);
                 return;
             }
@@ -117,18 +117,19 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     function redirectToDashboard(role) {
+        // INTERNAL PATHS - works on both local and GitHub Pages
         switch(role) {
             case 'system_admin':
-                window.location.href = '../login/dashboard/system-admin.html';
+                window.location.href = 'dashboard/system-admin.html';
                 break;
             case 'admin':
-                window.location.href = '../dashboard/admin.html';
+                window.location.href = 'dashboard/admin.html';
                 break;
             case 'user':
-                window.location.href = '../dashboard/user.html';
+                window.location.href = 'dashboard/user.html';
                 break;
             default:
-                window.location.href = '../login/dashboard/user.html';
+                window.location.href = 'dashboard/user.html';
         }
     }
     
@@ -155,8 +156,8 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-// Global logout function
+// Global logout function - INTERNAL PATH
 function logout() {
     localStorage.removeItem('currentUser');
-    window.location.href = '../index.html';
-    }
+    window.location.href = 'index.html';
+                        }

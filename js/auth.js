@@ -1,4 +1,4 @@
-// Authentication System with Sample Admin
+// Authentication System with Sample Admin - FIXED PATHS
 document.addEventListener('DOMContentLoaded', function() {
     const loginForm = document.getElementById('loginForm');
     const loginMessage = document.getElementById('loginMessage');
@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 showMessage('Login successful! Redirecting...', 'success');
                 
                 setTimeout(() => {
-                    window.location.href = '../login/dashboard/system-admin.html';
+                    window.location.href = 'dashboard/system-admin.html'; // ✅ FIXED PATH
                 }, 1000);
                 return;
             }
@@ -119,16 +119,16 @@ document.addEventListener('DOMContentLoaded', function() {
     function redirectToDashboard(role) {
         switch(role) {
             case 'system_admin':
-                window.location.href = '../dashboard/system-admin.html';
+                window.location.href = 'dashboard/system-admin.html'; // ✅ FIXED PATH
                 break;
             case 'admin':
-                window.location.href = '../dashboard/admin.html';
+                window.location.href = 'dashboard/admin.html'; // ✅ FIXED PATH
                 break;
             case 'user':
-                window.location.href = '../dashboard/user.html';
+                window.location.href = 'dashboard/user.html'; // ✅ FIXED PATH
                 break;
             default:
-                window.location.href = '../dashboard/user.html';
+                window.location.href = 'dashboard/user.html'; // ✅ FIXED PATH
         }
     }
     
@@ -139,7 +139,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 const userData = JSON.parse(user);
                 redirectToDashboard(userData.role);
             } catch (error) {
-                localStorage.removeItem('currentUser');
+                console.log('No valid user session found');
+                // Don't remove item here, let it be handled by login page
             }
         }
     }
@@ -150,14 +151,15 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     function showMessage(text, type) {
-        loginMessage.textContent = text;
-        loginMessage.className = `message ${type}`;
+        if (loginMessage) {
+            loginMessage.textContent = text;
+            loginMessage.className = `message ${type}`;
+        }
     }
 });
 
 // Global logout function
 function logout() {
     localStorage.removeItem('currentUser');
-    window.location.href = '../index.html';
-        }
-                
+    window.location.href = 'index.html'; // ✅ FIXED PATH
+            }

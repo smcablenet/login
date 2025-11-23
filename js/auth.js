@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 showMessage('Login successful! Redirecting...', 'success');
                 
                 setTimeout(() => {
-                    window.location.href = '/login/dashboard/system-admin.html';
+                    window.location.href = 'system-admin.html';
                 }, 1000);
                 return;
             }
@@ -92,7 +92,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 user_id: 'SYS001',
                 full_name: 'System Administrator',
                 phone: '01955255066',
-                password: 'admin@milon',
+                password: 'admin@milon1',
                 role: 'system_admin',
                 address: 'Dhaka, Bangladesh',
                 service_type: 'Administration',
@@ -120,16 +120,16 @@ document.addEventListener('DOMContentLoaded', function() {
         // INTERNAL PATHS - works on both local and GitHub Pages
         switch(role) {
             case 'system_admin':
-                window.location.href = '/system-admin.html';
+                window.location.href = '/login/dashboard/system-admin.html';
                 break;
             case 'admin':
-                window.location.href = '/admin.html';
+                window.location.href = '/login/dashboard/admin.html';
                 break;
             case 'user':
                 window.location.href = '/user.html';
                 break;
             default:
-                window.location.href = 'dashboard/user.html';
+                window.location.href = '/login/dashboard/user.html';
         }
     }
     

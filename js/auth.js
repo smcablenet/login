@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 
                 setTimeout(() => {
                     window.location.href = 'system-admin.html';
-                }, 1000);
+                } );
                 return;
             }
             

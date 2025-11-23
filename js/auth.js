@@ -159,5 +159,5 @@ document.addEventListener('DOMContentLoaded', function() {
 // Global logout function - INTERNAL PATH
 function logout() {
     localStorage.removeItem('currentUser');
-    window.location.href = 'index.html';
+    window.location.href = '../index.html';
                         }
